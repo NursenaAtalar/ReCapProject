@@ -10,12 +10,26 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            
+            //CarManager carManager = Inmemory();
 
             CarManager carManager = new CarManager(new EfCarDal());
-            carManager.Add(new Car { CarId=1,BrandId = 1, ColorId = 2, DailyPrice = 500, ModelYear = "2016", Description = "BMW" });
-            
+           
+            foreach (var car in carManager.GetCarsByColorId(2))
+            {
+                System.Console.WriteLine(car.Name);
+            }
+        }
 
+        private static CarManager Inmemory()
+        {
+            CarManager carManager = new CarManager(new InMemoryCarDal());
+            carManager.Add(new Car { Id = 1, BrandId = 1, ColorId = 2, DailyPrice = 500, ModelYear = "2016", Description = "BMW" });
+            foreach (var car in carManager.GetAll())
+            {
+                System.Console.WriteLine(car.Id + car.Description);
+            }
+
+            return carManager;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstarct;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,29 +9,14 @@ namespace Business.Concrete
 {
     public class BrandManager : IBrandService
     {
-        public void Add(Brand brand)
+        IBrandDal _brandDal;
+        public BrandManager(IBrandDal brandDal)
         {
-            throw new NotImplementedException();
+            _brandDal = brandDal;
         }
-
-        public void Delete(Brand brand)
+        public List<Brand> GetBrands()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Brand> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Color GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Brand brand)
-        {
-            throw new NotImplementedException();
+            return _brandDal.GetAll();
         }
     }
 }

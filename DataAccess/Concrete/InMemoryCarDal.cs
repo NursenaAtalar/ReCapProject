@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstarct;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace DataAccess.Concrete
     {
         List<Car> _cars = new List<Car>
         {
-            new Car{CarId=1,BrandId=2, ColorId=1,DailyPrice=200, ModelYear="2007",Description="second hand"},
-            new Car{CarId=2,BrandId=2, ColorId=2,DailyPrice=600, ModelYear="2015",Description="new"},
-            new Car{CarId=3,BrandId=1, ColorId=2,DailyPrice=400, ModelYear="2013",Description="second hand"},
+            new Car{Id=1,BrandId=2, ColorId=1,DailyPrice=200, ModelYear="2007",Description="second hand"},
+            new Car{Id=2,BrandId=2, ColorId=2,DailyPrice=600, ModelYear="2015",Description="new"},
+            new Car{Id=3,BrandId=1, ColorId=2,DailyPrice=400, ModelYear="2013",Description="second hand"},
         };
 
         public void Add(Car car)
@@ -25,7 +26,7 @@ namespace DataAccess.Concrete
 
         public void Delete(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            Car carToDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
             _cars.Remove(carToDelete);
         }
 
@@ -34,25 +35,27 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll()
+        
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             return _cars;
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Car> GetById(int carId)
+        {
+           return _cars.Where(c => c.Id == carId).ToList();
+        }
+
+        public List<CarDetailDto> GetCarDetailDtos(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetById(int carId)
-        {
-           return _cars.Where(c => c.CarId == carId).ToList();
-        }
-
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
-            carToUpdate.CarId = car.CarId;
+            Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
+            carToUpdate.Id = car.Id;
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;

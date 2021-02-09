@@ -63,7 +63,7 @@ namespace Business.Concrete
             return _carDal.GetCarDetailDtos();
         }
 
-        public List<CarDetailDto> GetCarsByColorId(int x)
+        public List<CarDetailDto> GetCarByColorId(int x)
         {
             return _carDal.GetCarDetailDtos(c => c.ColorId == x);
         }

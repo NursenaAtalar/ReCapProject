@@ -29,13 +29,13 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        IResult IBrandService.Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAdded);
         }
 
-        IDataResult<List<Brand>> IBrandService.GetBrands()
+        public IDataResult<List<Brand>> GetBrands()
         {
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }

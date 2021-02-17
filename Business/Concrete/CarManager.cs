@@ -33,7 +33,7 @@ namespace Business.Concrete
             }
         }
 
-        IResult ICarService.Update(Car car)
+        public IResult Update(Car car)
         {
             if (car.DailyPrice > 0 && car.Description.Length > 2)
             {
@@ -47,38 +47,38 @@ namespace Business.Concrete
             
         }
 
-        IResult ICarService.Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
 
-        IDataResult<List<Car>> ICarService.GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>( _carDal.GetAll());
         }
 
-        IDataResult<Car> ICarService.GetById(int id)
+        public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
-        IDataResult<List<Car>> ICarService.GetAllDailyPrice(decimal min, decimal max)
+        public IDataResult<List<Car>> GetAllDailyPrice(decimal min, decimal max)
         {
             return new SuccessDataResult<List<Car>>( _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max));
         }
 
-        IDataResult<List<CarDetailDto>> ICarService.GetCarDetailDto()
+        public IDataResult<List<CarDetailDto>> GetCarDetailDto()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos());
         }
 
-        IDataResult<List<CarDetailDto>> ICarService.GetCarByColorId(int x)
+        public IDataResult<List<CarDetailDto>> GetCarByColorId(int x)
         {
             return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetCarDetailDtos(c => c.ColorId == x));
         }
 
-        IDataResult<List<CarDetailDto>> ICarService.GetCarByBrandId(int x)
+        public IDataResult<List<CarDetailDto>> GetCarByBrandId(int x)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos(b => b.BrandId == x));
         }

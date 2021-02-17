@@ -54,11 +54,11 @@ namespace Console
         //    return carManager;
     }
 
-    private static void RentalAdd()
-    {
-        RentalManager rentalManager = new RentalManager(new EfRentalDal());
-        rentalManager.Add(new Rental { CarId = 4, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = null });
-    }
+    //private static void RentalAdd()
+    //{
+    //    RentalManager rentalManager = new RentalManager(new EfRentalDal());
+    //    rentalManager.Add(new Rental { CarId = 4, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = null });
+    //}
 
 }
     

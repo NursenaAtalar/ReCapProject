@@ -28,13 +28,13 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        IResult IColorService.Add(Color color)
+        public IResult Add(Color color)
         {
             _colorDal.Add(color);
             return new SuccessResult(Messages.ColorAdded);
         }
 
-        IDataResult<List<Color>> IColorService.GetColors()
+        public IDataResult<List<Color>> GetColors()
         {
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
         }

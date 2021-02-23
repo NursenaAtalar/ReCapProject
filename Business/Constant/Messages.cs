@@ -13,6 +13,7 @@ namespace Business.Constant
         public static string CarDeleted = "Car is deleted";
         public static string CarUpdated = "Car is updatted";
         public static string RentalUpdated = "Rentcar is Updated";
+        public static string RentalAdded = "Rentcar is Added";
         public static string CarUpdatedFail = "public static string CarUpdated ";
     }
 }
